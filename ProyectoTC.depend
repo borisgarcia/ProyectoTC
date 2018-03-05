@@ -1,0 +1,53 @@
+# depslib dependency file v1.0
+1519716231 source:c:\users\borisgarcia\desktop\proyectotc\proyectotc\main.cpp
+	<iostream>
+	"Automata.h"
+
+1519715881 c:\users\borisgarcia\desktop\proyectotc\proyectotc\include\automata.h
+	"Estados.h"
+
+1519715949 c:\users\borisgarcia\desktop\proyectotc\proyectotc\include\estados.h
+	"Arista.h"
+
+1519715907 c:\users\borisgarcia\desktop\proyectotc\proyectotc\include\arista.h
+	<vector>
+	<string.h>
+	<stdio.h>
+	<iostream>
+	<sstream>
+
+1519715949 source:c:\users\borisgarcia\desktop\proyectotc\proyectotc\src\arista.cpp
+	"Arista.h"
+
+1519716359 source:c:\users\borisgarcia\desktop\proyectotc\proyectotc\src\estados.cpp
+	"Estados.h"
+
+1519716231 source:c:\users\borisgarcia\desktop\proyectotc\proyectotc\src\automata.cpp
+	"Automata.h"
+
+1520138916 source:c:\users\borisgarcia\desktop\proyectotc\main.cpp
+	<iostream>
+	"Automata.h"
+
+1520102346 c:\users\borisgarcia\desktop\proyectotc\include\automata.h
+	"Estados.h"
+
+1519803448 c:\users\borisgarcia\desktop\proyectotc\include\estados.h
+	"Arista.h"
+
+1519715907 c:\users\borisgarcia\desktop\proyectotc\include\arista.h
+	<vector>
+	<string.h>
+	<stdio.h>
+	<iostream>
+	<sstream>
+
+1519715949 source:c:\users\borisgarcia\desktop\proyectotc\src\arista.cpp
+	"Arista.h"
+
+1519716359 source:c:\users\borisgarcia\desktop\proyectotc\src\estados.cpp
+	"Estados.h"
+
+1520138892 source:c:\users\borisgarcia\desktop\proyectotc\src\automata.cpp
+	"Automata.h"
+
