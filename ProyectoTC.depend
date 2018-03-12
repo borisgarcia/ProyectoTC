@@ -25,14 +25,14 @@
 1519716231 source:c:\users\borisgarcia\desktop\proyectotc\proyectotc\src\automata.cpp
 	"Automata.h"
 
-1520138916 source:c:\users\borisgarcia\desktop\proyectotc\main.cpp
+1520877205 source:c:\users\borisgarcia\desktop\proyectotc\main.cpp
 	<iostream>
 	"Automata.h"
 
-1520102346 c:\users\borisgarcia\desktop\proyectotc\include\automata.h
+1520879727 c:\users\borisgarcia\desktop\proyectotc\include\automata.h
 	"Estados.h"
 
-1519803448 c:\users\borisgarcia\desktop\proyectotc\include\estados.h
+1520871048 c:\users\borisgarcia\desktop\proyectotc\include\estados.h
 	"Arista.h"
 
 1519715907 c:\users\borisgarcia\desktop\proyectotc\include\arista.h
@@ -45,9 +45,9 @@
 1519715949 source:c:\users\borisgarcia\desktop\proyectotc\src\arista.cpp
 	"Arista.h"
 
-1519716359 source:c:\users\borisgarcia\desktop\proyectotc\src\estados.cpp
+1520875821 source:c:\users\borisgarcia\desktop\proyectotc\src\estados.cpp
 	"Estados.h"
 
-1520138892 source:c:\users\borisgarcia\desktop\proyectotc\src\automata.cpp
+1520876027 source:c:\users\borisgarcia\desktop\proyectotc\src\automata.cpp
 	"Automata.h"
 

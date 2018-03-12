@@ -4,6 +4,7 @@ Estados::Estados(string nombre)
 {
     cantCaminos = 0;
     this->nombre = nombre;
+    aceptacion = false;
 }
 
 Estados::~Estados()

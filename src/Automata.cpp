@@ -147,7 +147,7 @@ int Automata::NFAtoDFA()
 
 int Automata::NFAtoDFA_R()
 {
-    return 0;
+
 }
 
 void Automata::crearNFA()
@@ -202,6 +202,7 @@ void Automata::crearNFA()
         cout<<"Ingrese el numero de Estado :Q";
         cin>>eAceptacion;
         aceptacion.push_back(obtenerEstado(eAceptacion));
+        obtenerEstado(eAceptacion)->aceptacion = true;
     }
 }
 
@@ -250,6 +251,7 @@ void Automata::crearDFA()
         cout<<"Ingrese el numero de Estado :Q";
         cin>>eAceptacion;
         aceptacion.push_back(obtenerEstado(eAceptacion));
+        obtenerEstado(eAceptacion)->aceptacion = true;
     }
 }
 
@@ -274,6 +276,8 @@ void Automata::imprimirDFA()
 
 bool Automata::resolverDFA(char palabra[])
 {
+    int cont = 0;
+    int x = strlen(palabra);
     Estados * actual = inicial;
 
     for(int x =0;x<strlen(palabra);x++)
@@ -303,5 +307,38 @@ bool Automata::resolverDFA(char palabra[])
     }
     cout<<"Palabra No Aceptada"<<endl;
     return false;
+
+}
+
+bool Automata::resolverDFA1(string palabra)
+{
+    Estados * actual = inicial;
+    return resolverDFA1_2(actual,palabra,0);
+}
+
+bool Automata::resolverDFA1_2(Estados * e,string pal,int cont)
+{
+    if(cont < pal.size())
+    {
+        cout<<cont<<endl;
+        for(int y = 0;y<cantAlfabeto;y++)
+        {
+            string x = e->obtenerCamino(y)->elemento;
+            if(x.at(0) == pal.at(cont))
+            {
+                e = obtenerEstado(e->obtenerCamino(y)->numEstado);
+                return resolverDFA1_2(e,pal,cont+1);
+            }
+        }
+    }
+    else if (e->aceptacion && cont == (pal.size()))
+    {
+        cout<<"Aceptada";
+        return true;
+    }
+
+    else if (!e->aceptacion && cont == (pal.size()))
+        return false;
+
 
 }

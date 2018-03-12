@@ -4,7 +4,8 @@ using namespace std;
 
 int main()
 {
-   {
+
+
         Automata * test = new Automata();
         test->alfabeto.push_back("A");
         test->alfabeto.push_back("B");
@@ -46,14 +47,11 @@ int main()
         test->obtenerEstado(4)->agregarCamino(a7);
 
         test->definirInicial(test->obtenerEstado(0));
-        test->aceptacion.push_back(test->obtenerEstado(0));
-        test->NFAtoDFA();
-    }
+        test->inicial->aceptacion = true;
+        //test->obtenerEstado(1)->aceptacion = false;
 
+    test->resolverDFA1("AAAAA");
 
-    //cout<<test->estados.at(0)->nombre;
-
-    //test->NFAtoDFA();
 
     return 0;
 }

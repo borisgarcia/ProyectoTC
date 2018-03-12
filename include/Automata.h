@@ -19,7 +19,9 @@ class Automata
         int NFAtoDFA();
         int NFAtoDFA_R();
 
+        bool resolverDFA1(string palabra);
         bool resolverDFA(char palabra[]);
+        bool resolverDFA1_2(Estados * e,string palabra,int cont);
         Estados * obtenerEstado(int num);
 
         vector<Estados*> aceptacion;

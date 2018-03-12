@@ -13,6 +13,7 @@ class Estados
         void agregarCamino(Arista * a);
         string nombre;
         int cantCaminos;
+        bool aceptacion;
 
     protected:
 
