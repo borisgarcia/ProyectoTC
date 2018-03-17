@@ -274,23 +274,21 @@ void Automata::imprimirDFA()
     }
 }
 
-bool Automata::resolverDFA(char palabra[])
+
+
+bool Automata::resolverDFA(string palabra)
 {
     int cont = 0;
-    int x = strlen(palabra);
     Estados * actual = inicial;
 
-    for(int x =0;x<strlen(palabra);x++)
+    for(int x =0;x<palabra.size();x++)
     {
         for(int y = 0;y<cantAlfabeto;y++)
         {
-            stringstream ss;
-            string target;
-            char mychar= palabra[x];
-            ss << mychar;
-            ss >> target;
 
-            if(actual->obtenerCamino(y)->elemento == target)
+            string x1 = actual->obtenerCamino(y)->elemento;
+
+            if(x1.at(0) == palabra.at(x))
             {
                 actual = obtenerEstado(actual->obtenerCamino(y)->numEstado);
             }
@@ -301,11 +299,11 @@ bool Automata::resolverDFA(char palabra[])
     {
         if(aceptacion.at(x)->nombre == actual->nombre)
         {
-            cout<<"Palabra Aceptada - Estado Actual" + actual->nombre<<endl;
+            cout<<"La Palabra: -"<<palabra<<"- es aceptada - Estado Actual " + actual->nombre<<endl;
             return true;
         }
     }
-    cout<<"Palabra No Aceptada"<<endl;
+    cout<<"La Palabra: -"<<palabra<<"- no es aceptada"<<endl;
     return false;
 
 }
@@ -320,7 +318,6 @@ bool Automata::resolverDFA1_2(Estados * e,string pal,int cont)
 {
     if(cont < pal.size())
     {
-        cout<<cont<<endl;
         for(int y = 0;y<cantAlfabeto;y++)
         {
             string x = e->obtenerCamino(y)->elemento;
