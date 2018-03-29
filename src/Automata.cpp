@@ -131,24 +131,19 @@ int Automata::NFAtoDFA()
                             eNFAtoDFA.push_back(estado_B);
                         }
                     }
-
                 }
             }
         }
     }
 
     //Solo imprime para verificar
-    for(int x = 0;x<eNFAtoDFA.size();x++)
+    /*for(int x = 0;x<eNFAtoDFA.size();x++)
     {
         cout<<eNFAtoDFA.at(x)->nombre<<endl;
-    }
+    }*/
     return 0;
 }
 
-int Automata::NFAtoDFA_R()
-{
-
-}
 
 void Automata::crearNFA()
 {
@@ -274,8 +269,6 @@ void Automata::imprimirDFA()
     }
 }
 
-
-
 bool Automata::resolverDFA(string palabra)
 {
     int cont = 0;
@@ -285,7 +278,6 @@ bool Automata::resolverDFA(string palabra)
     {
         for(int y = 0;y<cantAlfabeto;y++)
         {
-
             string x1 = actual->obtenerCamino(y)->elemento;
 
             if(x1.at(0) == palabra.at(x))
@@ -308,34 +300,123 @@ bool Automata::resolverDFA(string palabra)
 
 }
 
-bool Automata::resolverDFA1(string palabra)
+void Automata::resolverDFA1(string palabra)
 {
     Estados * actual = inicial;
-    return resolverDFA1_2(actual,palabra,0);
+    if(resolverDFA1_2(actual,inicial->caminos,0,palabra,0))
+        cout<<"Palabra: "<<palabra<<" no aceptada"<<endl;
+    else
+        cout<<"Palabra: "<<palabra<<" es aceptada"<<endl;
 }
 
-bool Automata::resolverDFA1_2(Estados * e,string pal,int cont)
+int Automata::resolverDFA1_2(Estados * e,vector<Arista*> a,int contArista,string pal,int contPal)
 {
-    if(cont < pal.size())
+    if(contPal == pal.size())
     {
-        for(int y = 0;y<cantAlfabeto;y++)
+        if(e->aceptacion)
+            return 0;
+        else
+            return 1;
+    }
+    for(contArista = 0;contArista<a.size();contArista++)
+    {
+        int y = -1;
+        Arista * arist = a.at(contArista);
+        string test = arist->elemento;
+        if(test.at(0) == pal.at(contPal))
         {
-            string x = e->obtenerCamino(y)->elemento;
-            if(x.at(0) == pal.at(cont))
+            y = resolverDFA1_2(obtenerEstado(arist->numEstado),obtenerEstado(arist->numEstado)->caminos,0,pal,contPal+1);
+            if(y == 3)
+                continue;
+            else if(y == 1)
+                continue;
+            else if(y == 0)
+                return y;
+        }
+    }
+    return 3;
+}
+
+
+
+int Gramatica::_check(NoTerminal *noTerminal, vector<string> vs, string cadena, int cont)
+{
+    if(cont==cadena.size())
+    {
+        if(noTerminal->terminal)
+        {
+            cout<<"Palabra Aceptada"<<endl;
+            return 0;
+        }
+        else
+            return 1;
+    }
+    else
+    {
+        cout<<"______________"<<endl;
+        cout<<"ElsePrincipal - Contador: "<<cont<<endl;
+        cout<<"Actual: "<<noTerminal->nombre<<endl;
+        for(int x = 0;x<vs.size();x++)
+        {
+            bool flag = false;
+            int b = -1;
+            string temp = vs.at(x);
+            for(int y = 0;y<temp.size();y++)
             {
-                e = obtenerEstado(e->obtenerCamino(y)->numEstado);
-                return resolverDFA1_2(e,pal,cont+1);
+                if(isupper(temp.at(y)))
+                {
+                    stringstream ss;
+                    string s;
+                    ss << temp.at(y);
+                    ss >> s;
+                    noTerminal = obtenerNT(s);
+                    cout<<"isUpper - "<<s<<endl;
+                    b = _check(noTerminal,noTerminal->producciones,cadena,cont);
+                    if(b == 1)
+                        continue;
+                    if(b == 2)
+                        continue;
+                    else if(b == 0)
+                        return b;
+                }
+                else
+                {
+                    if(temp.at(y)==cadena.at(cont))
+                    {
+                        if(temp.size()==1 || (temp.size()-1) == y)
+                        {
+                            cout<<"LowerSolo - "<<temp.at(y)<<endl;
+                            stringstream tt;
+                            string t;
+                            tt << temp.at(y);
+                            tt >> t;
+                            noTerminal = obtenerT(t);
+                            b = _check(noTerminal,noTerminal->producciones,cadena,++cont);
+                            if(b == 1)
+                                continue;
+                            if(b == 2)
+                                continue;
+                            else if(b == 0)
+                                return b;
+                        }
+                        else
+                        {
+                            cout<<"Lower - "<<temp.at(y)<<endl;
+                            cont++;
+                        }
+
+                    }
+                    else
+                    {
+                        cout<<"NEL"<<endl;
+                        break;
+                    }
+
+                }
+
             }
         }
     }
-    else if (e->aceptacion && cont == (pal.size()))
-    {
-        cout<<"Aceptada";
-        return true;
-    }
-
-    else if (!e->aceptacion && cont == (pal.size()))
-        return false;
-
+    return 2;
 
 }

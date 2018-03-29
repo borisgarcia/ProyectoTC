@@ -17,11 +17,10 @@ class Automata
         void definirInicial(Estados * e);
 
         int NFAtoDFA();
-        int NFAtoDFA_R();
 
-        bool  resolverDFA1(string palabra);
+        void  resolverDFA1(string palabra);
         bool resolverDFA(string palabra);
-        bool  resolverDFA1_2(Estados * e,string pal,int cont);
+        int  resolverDFA1_2(Estados * e,vector<Arista*> a,int contArista,string pal,int contPal);
         Estados * obtenerEstado(int num);
 
         vector<Estados*> aceptacion;

@@ -25,12 +25,12 @@
 1519716231 source:c:\users\borisgarcia\desktop\proyectotc\proyectotc\src\automata.cpp
 	"Automata.h"
 
-1520890370 source:c:\users\borisgarcia\desktop\proyectotc\main.cpp
+1521524239 source:c:\users\borisgarcia\desktop\proyectotc\main.cpp
 	<iostream>
 	"Automata.h"
 	<fstream>
 
-1520888187 c:\users\borisgarcia\desktop\proyectotc\include\automata.h
+1521433234 c:\users\borisgarcia\desktop\proyectotc\include\automata.h
 	"Estados.h"
 
 1520871048 c:\users\borisgarcia\desktop\proyectotc\include\estados.h
@@ -49,6 +49,6 @@
 1520875821 source:c:\users\borisgarcia\desktop\proyectotc\src\estados.cpp
 	"Estados.h"
 
-1520890319 source:c:\users\borisgarcia\desktop\proyectotc\src\automata.cpp
+1521524100 source:c:\users\borisgarcia\desktop\proyectotc\src\automata.cpp
 	"Automata.h"
 
